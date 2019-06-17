@@ -26,5 +26,8 @@ ADD config/nginx.conf /etc/nginx/nginx.conf
 
 ADD docker-entrypoint.sh /docker-entrypoint.sh
 
+RUN sed -e 's/100000/1000000/' \
+        -i /opt/generatedata/resources/classes/Core.class.php
+
 EXPOSE 80
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
